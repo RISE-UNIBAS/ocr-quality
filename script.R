@@ -3,7 +3,7 @@
 library(readr)
 library(stringdist)
 
-# Define the reference and hypothesis strings. The reference is the ground truth and the hipothesis is the direct OCR output.
+# Define the reference and hypothesis strings. The reference is the ground truth and the hypothesis is the direct OCR output.
 
 # Example: just one page (p. 715 in pdf), from Schriften_des_Deutschen_Vereins_Arm
 
