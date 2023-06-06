@@ -1,6 +1,8 @@
 # OCR quality evaluation
 
-Scripts in R and Python for OCR quality evaluation
+Evaluate CER (Character Error Rate) using scripts in R and Python.
 
-CER (Character Error Rate)  = (i + s + d) / n
+## File structure and overview
 
+- Script in R `/script.R`
+- Script in Python as Jupyter Notebook `/ocr_jiwer.ipynb`
