@@ -15,10 +15,13 @@ text <- pdftools::pdf_text("data/Schriften_des_Deutschen_Vereins_Arm_1984.pdf") 
 # e.g. Ver- sammlung
 
 probe <- "Ver-
-sammlung"
+sammlung 4 herzlichſt fiir"
 
 clean_text <- probe %>%
-  base::gsub("-\n", "", ., perl = T)
+  base::gsub("-\n", "", ., perl = T) %>%
+  base::gsub("\\d", "", ., perl = T) %>%
+  base::gsub("ſ", "s", ., perl = T) %>%
+  base::gsub("\\bfiir\\b", "für", ., perl = T)
 clean_text
 
 clean_text <- text %>%
@@ -34,7 +37,7 @@ MFW_in_text <- tibble(text = text) %>%
 # Regex in file directory----  (xfun)
 # HANDLE with care!
 file_list <- list.files("data/")
-gsub_files(file_list, "\\d+", "", perl=TRUE)
+# HANDLE with care! gsub_files(file_list, "\\d+", "", perl=TRUE)
 
 # To-Do
 
