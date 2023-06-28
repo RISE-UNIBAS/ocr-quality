@@ -5,7 +5,7 @@ library(tidyverse)
 
 # First Option. Manually naming the output files----
 
-input_file <- "data_input//Schriften_des_Deutschen_Vereins_Arm_1984.pdf"
+input_file <- "data_input/Schriften_des_Deutschen_Vereins_Arm_1984.pdf"
 output_file <- "data_output/Schriften_des_Deutschen_Vereins_Arm_1984_sampled.pdf"
 
 ## Get infos about the pdfs, to get e.g. the number of pages
