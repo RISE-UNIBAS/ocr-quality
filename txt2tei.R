@@ -8,7 +8,7 @@ library(readr)
 library(xml2)
 
 # Path to the folder containing the text files and the output xml files
-folder_path <- "data_output"
+folder_path <- "data_output_clean/"
 output_folder <- "data_output_xml"
 
 # Get the list of text files in the folder
