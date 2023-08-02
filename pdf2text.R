@@ -1,46 +1,26 @@
-# Extract text from a OCR-PDF
+# Extract texts from several OCR-PDFs in a folder
+
+# Atention! Absolut paths in Windows. Use forward slash C:/.../.../ instead of backslash C:\...\...\ 
 
 library(pdftools)
-library(tidyverse)
-library(tidytext)
-library(xfun)
+library(readr)
 
-# Simple extraction----
+pdf_folder <- "data_input/"
+text_folder <- "data_output/"
 
-text <- pdftools::pdf_text("data/Schriften_des_Deutschen_Vereins_Arm_1984.pdf") %>%
-  # stringr::str_c(., collapse = "") %>%
-  readr::write_lines(., "data/Schriften_des_Deutschen_Vereins_Arm_1984.txt")
+# Get a list of PDF files in the folder
+pdf_files <- list.files(pdf_folder, pattern = "\\.pdf$", full.names = TRUE)
 
-# A bit of regex for cleaning----
-# e.g. Ver- sammlung
+# Loop through each PDF file
+for (pdf_file in pdf_files) {
+  # Extract text from the PDF
+  text <- pdf_text(pdf_file)
+  
+  file_name <- basename(pdf_file)
+  # Create the corresponding text file path
 
-probe <- "Ver-
-sammlung 4 herzlichſt fiir"
-
-clean_text <- probe %>%
-  base::gsub("-\n", "", ., perl = T) %>%
-  base::gsub("\\d", "", ., perl = T) %>%
-  base::gsub("ſ", "s", ., perl = T) %>%
-  base::gsub("\\bfiir\\b", "für", ., perl = T)
-clean_text
-
-clean_text <- text %>%
-  base::gsub("-\n", "", ., perl = T) %>%
-  readr::write_lines(., "data/Schriften_des_Deutschen_Vereins_Arm_1984_clean.txt")
-
-# MFW. To see error patterns----
-
-MFW_in_text <- tibble(text = text) %>%
-  unnest_tokens(word, text) %>%  # word-tokens. It needs tibble.
-  count(word, sort = T)
-
-# Regex in file directory----  (xfun)
-# HANDLE with care!
-file_list <- list.files("data/")
-# HANDLE with care! gsub_files(file_list, "\\d+", "", perl=TRUE)
-
-# To-Do
-
-# - Add loading multiple files
-# - Extract from a certain page (remove info pages)
-# - Add Tesseract ?
+  text_file <- file.path(text_folder, paste0(file_name, ".txt"))
+  
+  # Write the extracted text to the text file
+  write_lines(text, text_file)
+}
