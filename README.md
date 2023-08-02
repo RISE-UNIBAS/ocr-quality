@@ -23,6 +23,10 @@ A table of word frequencies from the extracted text.
 
 Another exploration of tokens/words frequencies and kwic (keyword in context).
 
+## txt2tei.R
+
+Plaintext file into a simple XML-TEI file
+
 ## cer.R and cer_jiwer.ipynb
 Evaluate CER (Character Error Rate) using scripts in R and Python (Jupyter Notebook).
 
