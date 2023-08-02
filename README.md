@@ -15,7 +15,7 @@ Clean the plaintext with regex
 
 Simple code to use regex within R
 
-## wordlist.R
+## wordlist.R
 
 A table of word frequencies from the extracted text
 
