@@ -11,7 +11,8 @@ text_data <- readtext("data_output/*.txt",
                       dvsep = "-")
 
 library(quanteda)
-
+library(quanteda.textstats)
+library(tidyverse)
 # Creates a quanteda corpus
 corpus <- corpus(text_data)
 
